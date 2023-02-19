@@ -1,4 +1,9 @@
-require('colors')
+const colors = require('colors')
+
+colors.setTheme({
+  success: ['white', 'bgGreen'],
+  error: ['white', 'bgRed'],
+})
 const Task = require('./task')
 
 class Tasks {
@@ -62,6 +67,21 @@ class Tasks {
         console.log(`${idx} ${desc} :: ${state}`)
       }
     })
+  }
+
+  deleteTask(id = '') {
+    if (this._list[id]) {
+      try {
+        delete this._list[id]
+        console.log('\nTask deleted succesfully'.green)
+      } catch {
+        console.log('\nTask could not be deleted'.bgRed)
+      }
+    }
+  }
+  deleteAll() {
+    this._list = {}
+    console.log('\nALL tasks have been deleted'.bgRed)
   }
 }
 

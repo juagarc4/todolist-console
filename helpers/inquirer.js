@@ -31,10 +31,21 @@ const questions = [
         value: '6',
         name: `${'6.'.green} Delete task`,
       },
+      new inquirer.Separator(),
+      {
+        value: '7',
+        name: `${'7.'.green} Create dummy tasks`,
+      },
+      {
+        value: '8',
+        name: `${'8.'.green} Delete ALL tasks`,
+      },
+      new inquirer.Separator(),
       {
         value: '0',
         name: `${'0.'.green} Exit`,
       },
+      new inquirer.Separator(),
     ],
   },
 ]
@@ -80,8 +91,45 @@ const readInput = async (message) => {
   const { desc } = await inquirer.prompt(question)
   return desc
 }
+
+const tasksToDelete = async (tasks = []) => {
+  const choices = tasks.map((task, i) => {
+    const idx = `${i + 1}.`.green
+    return {
+      value: task.id,
+      name: `${idx} ${task.desc}`,
+    }
+  })
+  const questions = [
+    {
+      type: 'list',
+      name: 'id',
+      message: 'Delete',
+      choices,
+    },
+  ]
+  console.log('\n')
+  const { id } = await inquirer.prompt(questions)
+  return id
+}
+
+const confirm = async (message) => {
+  const question = [
+    {
+      type: 'confirm',
+      name: 'ok',
+      message,
+    },
+  ]
+
+  const { ok } = await inquirer.prompt(question)
+  return ok
+}
+
 module.exports = {
   inquirerMenu,
   pause,
   readInput,
+  tasksToDelete,
+  confirm,
 }
