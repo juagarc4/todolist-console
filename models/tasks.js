@@ -21,6 +21,12 @@ class Tasks {
     const task = new Task(desc)
     this._list[task.id] = task
   }
+
+  loadTasksFromArray(tasks = []) {
+    tasks.forEach((task) => {
+      this._list[task.id] = task
+    })
+  }
 }
 
 module.exports = Tasks

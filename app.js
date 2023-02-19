@@ -2,30 +2,33 @@ require('colors')
 const Task = require('./models/task')
 const Tasks = require('./models/tasks')
 const { inquirerMenu, pause, readInput } = require('./helpers/inquirer')
-const { saveDb } = require('./helpers/handleDb')
+const { saveDb, readDb } = require('./helpers/handleDb')
 
 const main = async () => {
   let opt = ''
   const tasks = new Tasks()
+  const tasksDB = readDb()
+
+  if (tasksDB) {
+    tasks.loadTasksFromArray(tasksDB)
+  }
 
   do {
     opt = await inquirerMenu()
-
     switch (opt) {
       case '1':
         const desc = await readInput('Description: ')
         tasks.createTask(desc)
-        console.log(desc)
         break
       case '2':
-        console.log(tasks.listArr)
+        console.log(tasks)
         break
 
       default:
         break
     }
 
-    //saveDb(tasks.listArr)
+    saveDb(tasks.listArr)
 
     if (opt !== '0') await pause()
   } while (opt !== '0')
