@@ -1,7 +1,7 @@
 {
   "name": "task-list",
   "version": "1.0.0",
-  "description": "Simple jtas list from the console",
+  "description": "Simple console todo list made with node",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

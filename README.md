@@ -1,3 +1,3 @@
-- **Interactive console application**
+- **TodDo List - Console Application**
 
-Simple interactive console application made with node.
+Simple console ToDo list made with node to be used from the console.
