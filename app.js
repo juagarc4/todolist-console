@@ -21,9 +21,14 @@ const main = async () => {
         tasks.createTask(desc)
         break
       case '2':
-        console.log(tasks)
+        tasks.listTasks()
         break
-
+      case '3':
+        tasks.listPendingTasks()
+        break
+      case '4':
+        tasks.listCompletedTasks()
+        break
       default:
         break
     }
