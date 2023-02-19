@@ -30,9 +30,11 @@ const main = async () => {
         break
       case '6':
         const id = await tasksToDelete(tasks.listArr)
-        const deleteTask = await confirm('Are you sure?')
-        if (deleteTask) {
-          tasks.deleteTask(id)
+        if (id !== '0') {
+          const deleteTask = await confirm('Are you sure?')
+          if (deleteTask) {
+            tasks.deleteTask(id)
+          }
         }
         break
       case '7':
