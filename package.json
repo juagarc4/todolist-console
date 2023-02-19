@@ -8,15 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/juagarc4/console-app.git"
+    "url": "git+https://github.com/juagarc4/todolist-console.git"
   },
   "author": "Raul Garcia",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/juagarc4/console-app/issues"
+    "url": "https://github.com/juagarc4/todolist-console/issues"
   },
-  "homepage": "https://github.com/juagarc4/console-app#readme",
+  "homepage": "https://github.com/juagarc4/todolist-console#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "yargs": "^17.7.0"
   }
 }
