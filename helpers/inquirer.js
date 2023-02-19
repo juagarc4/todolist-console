@@ -61,7 +61,27 @@ const pause = async () => {
   console.log('\n')
   await inquirer.prompt(question)
 }
+
+const readInput = async (message) => {
+  const question = [
+    {
+      type: 'input',
+      name: 'desc',
+      message,
+      validate(value) {
+        if (value.length === 0) {
+          return 'Please provide a value'
+        }
+        return true
+      },
+    },
+  ]
+
+  const { desc } = await inquirer.prompt(question)
+  return desc
+}
 module.exports = {
   inquirerMenu,
   pause,
+  readInput,
 }
