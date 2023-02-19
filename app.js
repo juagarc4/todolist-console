@@ -1,6 +1,6 @@
 require('colors')
 const Tasks = require('./models/tasks')
-const { inquirerMenu, pause, readInput, tasksToDelete, confirm } = require('./helpers/inquirer')
+const { inquirerMenu, pause, readInput, tasksToDelete, confirm, tasksToSelect } = require('./helpers/inquirer')
 const { saveDb, readDb } = require('./helpers/handleDb')
 
 const main = async () => {
@@ -27,6 +27,10 @@ const main = async () => {
         break
       case '4':
         tasks.listCompletedTasks()
+        break
+      case '5':
+        const ids = await tasksToSelect(tasks.listArr)
+        tasks.toogleCompleted(ids)
         break
       case '6':
         const id = await tasksToDelete(tasks.listArr)

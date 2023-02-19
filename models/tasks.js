@@ -61,10 +61,26 @@ class Tasks {
       if (completedOn) {
         counter += 1
         let idx = `${counter}.`.green
-        let completionDate = `${completedOn}`.green
+        let date = new Date(completedOn).toLocaleString('de-DE')
+        let completionDate = `${date}`.green
         let state = `${'Completed'.green} on ${completionDate}`
 
         console.log(`${idx} ${desc} :: ${state}`)
+      }
+    })
+  }
+
+  toogleCompleted(ids = []) {
+    console.log()
+    ids.forEach((id) => {
+      const task = this._list[id]
+      if (!task.completedOn) {
+        task.completedOn = Date.now()
+      }
+    })
+    this.listArr.forEach((task) => {
+      if (!ids.includes(task.id)) {
+        this._list[task.id].completedOn = null
       }
     })
   }
